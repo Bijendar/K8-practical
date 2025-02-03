@@ -5,10 +5,15 @@ metadata:
   labels:
     app: mysql
 spec:
-  storageClassName: manual
+  storageClassName: manual                # The storage class defines the type of storage. "manual" here means it's manually managed (not dynamically provisioned).
   capacity:
     storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
+  accessModes:                            # Access mode indicates how the volume can be accessed.
+    - ReadWriteOnce                       # "ReadWriteOnce" means the volume can be mounted by a single node for read-write.
+  
+  hostPath:                                         
     path: "/mnt/data/mysql"
+  
+                                                    # This is the **location on the host node** where the storage is available.
+                                                    # In this case, it is a directory on the host machine (`/mnt/data/mysql`).
+   
